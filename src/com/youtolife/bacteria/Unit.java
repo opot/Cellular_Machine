@@ -26,7 +26,7 @@ public class Unit extends Cell {
 				my_map[i - x + 1][j - y + 1] = map[i][Main.FIELD_SIZE - j - 1];
 
 		my_map[1][1] = this;
-
+/*
 		for (int j = 0; j < my_map[0].length; j++) {
 			for (int i = 0; i < my_map.length; i++) {
 				char ch = '?';
@@ -55,7 +55,7 @@ public class Unit extends Cell {
 		queue.add(Action.up);
 		queue.add(Action.up);
 		queue.add(Action.up);
-		queue.add(Action.up);
+		queue.add(Action.up);*/
 		
 	}
 
@@ -139,7 +139,7 @@ public class Unit extends Cell {
 					for (int j = -1; j <= 1; j++)
 						my_map[i + mapX][j + mapY] = map[i + nx][ny - j];
 
-				for (int j = 0; j < my_map[0].length; j++) {
+				/*for (int j = 0; j < my_map[0].length; j++) {
 					for (int i = 0; i < my_map.length; i++) {
 						char ch = '?';
 
@@ -158,7 +158,7 @@ public class Unit extends Cell {
 					}
 					System.out.println();
 				}
-				System.out.println();
+				System.out.println();*/
 			} else {
 				Random r = new Random();
 				for (int j = 0; j < my_map[0].length; j++)

@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Main extends ApplicationAdapter {
 
 	public static final int FIELD_SIZE = 15;// only odd
-	public static final float UPDATE_TIME = 0.5f;
+	public static final float UPDATE_TIME = 0.0001f;
 
 	SpriteBatch batch;
 	OrthographicCamera camera;

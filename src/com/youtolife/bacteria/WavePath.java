@@ -58,7 +58,7 @@ public class WavePath {
 			n++;
 		}
 
-		for (int j = 1; j < map[0].length - 1; j++) {
+		/*for (int j = 1; j < map[0].length - 1; j++) {
 			for (int i = 1; i < map.length - 1; i++) {
 				if (map[i][j] == 1001)
 					System.out.print('x');
@@ -71,38 +71,37 @@ public class WavePath {
 		}
 
 		System.out.println("Steps " + map[nx + 1][ny + 1]);
-		System.out.println("new coords = " + nx + " " + ny + " old coords " + x
-				+ " " + y);
+		System.out.println("new coords = " + nx + " " + ny + " old coords " + x+ " " + y);*/
 
 		Vector<Action> path = new Vector<Action>();
-		int cx = nx, cy = ny;
-		int step = map[nx + 1][ny + 1];
-		while (cx != x && cy != y) {
+		int cx = nx+1, cy = ny+1;
+		int step = map[cx][cy];
+		while (map[cx][cy]!=0) {
 			boolean finded = false;
 			for (int k = 0; k <= 1 && !finded; k++) {
-				if (map[cx + 2 - 2 * k][cy + 1] == step - 1) {
+				if (map[cx + 1 - 2 * k][cy] == step - 1) {
 					finded = true;
 					if (k == 0) {
 						path.add(Action.left);
-						cx--;
+						cx++;
 					}
 					if (k == 1) {
 						path.add(Action.right);
-						cx++;
+						cx--;
 					}
-					System.out.println(path.get(path.size() - 1));
+					//System.out.println(path.get(path.size() - 1));
 				} else {
-					if (map[cx + 1][cy + 2 - 2 * k] == step - 1) {
+					if (map[cx][cy + 1 - 2 * k] == step - 1) {
 						finded = true;
 						if (k == 0) {
-							path.add(Action.down);
+							path.add(Action.up);
 							cy++;
 						}
 						if (k == 1) {
-							path.add(Action.up);
+							path.add(Action.down);
 							cy--;
 						}
-						System.out.println(path.get(path.size() - 1));
+						//System.out.println(path.get(path.size() - 1));
 					}
 				}
 			}
