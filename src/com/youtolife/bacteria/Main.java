@@ -63,6 +63,37 @@ public class Main extends ApplicationAdapter {
 			for (int j = 0; j < FIELD_SIZE; j++)
 				map[i][j].update(map, i, j, texture);
 
+		if(input.isKeyPressed(Input.Keys.W))//сдвиг камеры, масштабирование, вращение, ускорение
+			camera.zoom-=Gdx.graphics.getDeltaTime();
+		if(input.isKeyPressed(Input.Keys.S))
+			camera.zoom+=Gdx.graphics.getDeltaTime();
+
+		if(input.isKeyPressed(Input.Keys.Q))
+			camera.rotate(Gdx.graphics.getDeltaTime()*90);
+		if(input.isKeyPressed(Input.Keys.E))
+			camera.rotate(-Gdx.graphics.getDeltaTime()*90);
+		
+		if(input.isKeyPressed(Input.Keys.CONTROL_LEFT))
+			UPDATE_TIME+=Gdx.graphics.getDeltaTime();
+		if(input.isKeyPressed(Input.Keys.SHIFT_LEFT))
+			UPDATE_TIME-=Gdx.graphics.getDeltaTime();
+		
+		if(input.isKeyPressed(Input.Keys.LEFT))
+			camera.translate(new Vector2(-Gdx.graphics.getDeltaTime()*50,0));
+		if(input.isKeyPressed(Input.Keys.RIGHT))
+			camera.translate(new Vector2(Gdx.graphics.getDeltaTime()*50,0));
+		if(input.isKeyPressed(Input.Keys.UP))
+			camera.translate(new Vector2(0,Gdx.graphics.getDeltaTime()*50));
+		if(input.isKeyPressed(Input.Keys.DOWN))
+			camera.translate(new Vector2(0,-Gdx.graphics.getDeltaTime()*50));
+		
+		if(input.isKeyPressed(Input.Keys.SPACE)){//восстановление камеры
+			UPDATE_TIME = 1f;
+			camera = new OrthographicCamera(FIELD_SIZE, FIELD_SIZE);
+		}
+		
+		camera.update();
+
 		if (input.isTouched()) {
 			float stepX = Gdx.graphics.getWidth() / FIELD_SIZE;
 			float stepY = Gdx.graphics.getHeight() / FIELD_SIZE;
